@@ -63,7 +63,7 @@ do {
                     print "Confirmed that I am at $place. Adding Foursquare\n";
 
                     # tell foursquare
-                    _set_foursquare_location($v->{'Foursquare'}, $clat, $clon);
+                    _set_foursquare_location($v->{'Foursquare'}, $fsid, $clat, $clon);
                     $last_checkin = $v->{'Foursquare'};
                 }
             }
@@ -85,7 +85,7 @@ sub _get_current_location {
 }
 
 sub _set_foursquare_location {
-    (my $foursquare, my $lat, my $long) = @_;
+    (my $foursquare, my $fsid, my $lat, my $long) = @_;
 
     my $sock = IO::Socket::INET->new(PeerAddr=>'api.foursquare.com', PeerPort=>80,
                                  Proto =>'tcp', Type=>SOCK_STREAM) or die;
